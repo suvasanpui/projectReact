@@ -1,0 +1,3 @@
+{
+  "extends": "@kilohealth/eslint-config/react-native"
+}
