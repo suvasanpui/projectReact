@@ -35,7 +35,7 @@ function Newsapp() {
             </div>
             <ul style={{display:"flex", gap:"11px"}}>
                 
-                <a style={{fontWeight:600, fontSize:"17px"}}>Trending News</a>
+                <a style={{fontWeight:600, fontSize:"17px"}}><h2>Trending News</h2></a>
 
             </ul>
             <div className='searchBar'>
