@@ -1,3 +1,7 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 *{
   margin: 0;
   padding: 0;
@@ -16,6 +20,14 @@ code{
   background-color: lightblue;
   
 }*/
+.all{
+  background-color: rgb(57, 57, 57);
+}
+.style-nav{
+  display: flex;
+  padding: 2;
+  margin: 2;
+}
 nav{
   display: flex;
   background-color: rgb(7, 26, 35);
@@ -56,6 +68,7 @@ nav ul{
   align-items: center;
   font-weight: 600px;
   font-size: 40px;
+  color: white;
 }
 .cardContainer{
   display: flex;
@@ -67,7 +80,6 @@ nav ul{
 
 .card{
   width: 320px;
-  box-shadow: 0px 4px 4px 4px rgb(255, 255, 255);
   background-color: white;
   border-radius: 3px;
   margin-top: 21px;

@@ -28,36 +28,36 @@ function Newsapp() {
     }
   
     return (
-        <div>
-        <nav>
+        <div className='all'>
+            <nav>
+                <div>
+                    <h1>NewsWorld</h1>
+                </div>
+                <ul style={{display:"flex", gap:"11px"}}>
+                    
+                    <a style={{fontWeight:600, fontSize:"17px"}}><h2>Trending News</h2></a>
+
+                </ul>
+                <div className='searchBar'>
+                    <input type='text' placeholder='Search News' value={search} onChange={handleInput}/>
+                    <button onClick={getData}>Search</button>
+                </div>
+            </nav>
             <div>
-                <h1>NewsWorld</h1>
+                <p className='head'>Stay Update with TrendyNews</p>
             </div>
-            <ul style={{display:"flex", gap:"11px"}}>
-                
-                <a style={{fontWeight:600, fontSize:"17px"}}><h2>Trending News</h2></a>
-
-            </ul>
-            <div className='searchBar'>
-                <input type='text' placeholder='Search News' value={search} onChange={handleInput}/>
-                <button onClick={getData}>Search</button>
+            <div className='categoryBtn'>
+                <button onClick={userInput} value="sports">Sports</button>
+                <button onClick={userInput} value="politics">Politics</button>
+                <button onClick={userInput} value="entertainment">Entertainment</button>
+                <button onClick={userInput} value="health">Health</button>
+                <button onClick={userInput} value="fitness">Fitness</button>
             </div>
-        </nav>
-        <div>
-            <p className='head'>Stay Update with TrendyNews</p>
-        </div>
-        <div className='categoryBtn'>
-            <button onClick={userInput} value="sports">Sports</button>
-            <button onClick={userInput} value="politics">Politics</button>
-            <button onClick={userInput} value="entertainment">Entertainment</button>
-            <button onClick={userInput} value="health">Health</button>
-            <button onClick={userInput} value="fitness">Fitness</button>
-        </div>
 
-        <div>
-        {newsData?  <Card data={newsData}/> : null}
+            <div>
+            {newsData?  <Card data={newsData}/> : null}
 
-        </div>
+            </div>
     </div>
         
     )
