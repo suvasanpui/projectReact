@@ -71,15 +71,48 @@ src/
 ## Reflection Questions
 
 ### 1. What are 3 things that you learned from this assignment?
-- [Your answer here]
-- [Your answer here]
-- [Your answer here]
+
+1. **State Management & Persistence**
+   - Mastered useState and useEffect hooks
+   - Implemented localStorage for data persistence
+   - Managed complex state updates efficiently
+
+2. **Drag-and-Drop Functionality**
+   - Built custom event drag handlers
+   - Implemented dynamic date slot calculations
+   - Created smooth movement animations
+
+3. **Dynamic Calendar Rendering**
+   - Developed structured monthly view logic
+   - Optimized month-to-month navigation
+   - Handled edge cases for date transitions
 
 ### 2. What was the most difficult part of the assignment?
-[Your answer here]
+
+The implementation of drag-and-drop functionality presented several challenges:
+- Maintaining accurate event positions during movement
+- Handling concurrent overlapping events
+- Optimizing performance for smooth UI updates
+- Managing complex state updates during drag operations
 
 ### 3. What would you have done differently given more time?
-[Your answer here]
+
+Given additional time, these improvements would be prioritized:
+
+1. **Feature Enhancements**
+   - Implementation of recurring events
+   - Advanced event categorization
+   - Multi-calendar support
+
+2. **UI/UX Improvements**
+   - Smooth transition animations
+   - Enhanced drag feedback
+   - Responsive design optimizations
+
+3. **Infrastructure Updates**
+   - Backend integration for data persistence
+   - Real-time synchronization
+   - Cross-device event management
 
 ## License
 
