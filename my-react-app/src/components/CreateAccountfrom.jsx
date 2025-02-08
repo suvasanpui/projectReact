@@ -1,12 +1,15 @@
+// Import statements
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import buildingImage from '../assets/image.png';
+import Frame116 from '../assets/Frame 116.svg';
+import Frame117 from '../assets/Frame 117.svg';
 
-// Add country and state data
+// Data configurations
 const countries = ["India", "USA", "UK", "Canada", "Australia"];
 const statesByCountry = {
-  India: ["Maharashtra", "Delhi", "Karnataka", "Tamil Nadu", "Gujarat"],
+  India: ["Maharashtra", "Delhi", "Karnataka", "Tamil Nadu", "Gujarat","Kolkata"],
   USA: ["California", "Texas", "Florida", "New York", "Illinois"],
   UK: ["England", "Scotland", "Wales", "Northern Ireland"],
   Canada: ["Ontario", "Quebec", "British Columbia", "Alberta"],
@@ -14,6 +17,8 @@ const statesByCountry = {
 };
 
 function CreateAccountForm() {
+  // State management
+  const [isFormValid, setIsFormValid] = useState(false);
   const [formData, setFormData] = useState({
     userType: "Owner",
     firstName: "",
@@ -34,6 +39,27 @@ function CreateAccountForm() {
     confirmPassword: "",
   });
 
+  // Form validation
+  const checkFormValidity = () => {
+    const { firstName, lastName, dateOfBirth, gender, email, phone, password, confirmPassword, address } = formData;
+    return Boolean(
+      firstName &&
+      lastName &&
+      dateOfBirth &&
+      gender &&
+      email &&
+      phone &&
+      password &&
+      confirmPassword &&
+      address.country &&
+      address.state &&
+      address.pin &&
+      address.locality &&
+      address.street
+    );
+  };
+
+  // Event handlers
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -52,14 +78,21 @@ function CreateAccountForm() {
         [name]: value,
       });
     }
+    
+    // Check form validity after state update
+    setTimeout(() => {
+      setIsFormValid(checkFormValidity());
+    }, 0);
   };
 
-  // Add new handler for date change
   const handleDateChange = (date) => {
     setFormData({
       ...formData,
       dateOfBirth: date
     });
+    setTimeout(() => {
+      setIsFormValid(checkFormValidity());
+    }, 0);
   };
 
   const handleSubmit = (e) => {
@@ -67,16 +100,17 @@ function CreateAccountForm() {
     console.log("Form Data Submitted:", formData);
   };
 
-  // Add available states based on selected country
+  // Helper calculations
   const availableStates = formData.address.country ? statesByCountry[formData.address.country] : [];
 
+  // Component render
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 py-4">
       <form
         onSubmit={handleSubmit}
         className="max-w-3xl w-full bg-white rounded-lg shadow-lg p-6 grid grid-cols-2 gap-3"
       >
-        {/* Left Section */}
+        {/* Left Section - Logo and Title */}
         <div className="flex flex-col items-center justify-center">
           <img
             src={buildingImage}
@@ -86,11 +120,12 @@ function CreateAccountForm() {
           <h1 className="text-xl font-bold mt-2 text-purple-700">housing.in</h1>
         </div>
 
-        {/* Right Section */}
+        {/* Right Section - Form Fields */}
         <div>
+          {/* Form Title */}
           <h2 className="text-lg font-bold mb-3">Create Account</h2>
 
-          {/* User Type */}
+          {/* User Type Selection */}
           <div className="mb-3">
             <label className="block text-gray-700 font-medium mb-1">I am a:</label>
             <div className="flex space-x-4">
@@ -111,7 +146,7 @@ function CreateAccountForm() {
             </div>
           </div>
 
-          {/* Name */}
+          {/* Personal Information */}
           <div className="flex mb-3 space-x-2">
             <input
               type="text"
@@ -131,7 +166,6 @@ function CreateAccountForm() {
             />
           </div>
 
-          {/* Date of Birth */}
           <div className="mb-3">
             <label className="block text-gray-700 font-medium mb-1">Date of Birth:</label>
             <DatePicker
@@ -147,7 +181,6 @@ function CreateAccountForm() {
             />
           </div>
 
-          {/* Gender */}
           <div className="mb-3">
             <label className="block text-gray-700 font-medium mb-1">Gender:</label>
             <div className="space-x-4">
@@ -166,7 +199,7 @@ function CreateAccountForm() {
             </div>
           </div>
 
-          {/* Other Fields */}
+          {/* Contact Information */}
           <input
             type="email"
             name="email"
@@ -176,7 +209,7 @@ function CreateAccountForm() {
             className="mb-3 border border-gray-300 rounded-lg p-2 w-full"
           />
           <input
-            type="text"
+            type="number"
             name="phone"
             placeholder="Phone"
             value={formData.phone}
@@ -184,6 +217,7 @@ function CreateAccountForm() {
             className="mb-3 border border-gray-300 rounded-lg p-2 w-full"
           />
 
+          {/* Address Information */}
           <div className="flex mb-3 space-x-2">
             <select
               name="address.country"
@@ -246,6 +280,7 @@ function CreateAccountForm() {
             />
           </div>
 
+          {/* Password Fields */}
           <div className="flex mb-3 space-x-2">
             <input
               type="password"
@@ -265,12 +300,24 @@ function CreateAccountForm() {
             />
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-purple-700 text-white py-1.5 rounded-lg"
-          >
-            Submit
-          </button>
+          {/* Navigation Buttons */}
+          <div className="flex justify-between space-x-4 w-full">
+            <button
+              type="button"
+              onClick={() => console.log("Frame 116 clicked")}
+              className="w-1/2 p-2 flex justify-center items-center"
+            >
+              <img src={Frame116} alt="Previous" className="w-12 h-12" />
+            </button>
+            <button
+              type="button"
+              disabled={!isFormValid}
+              onClick={() => console.log("Form submitted:", formData)}
+              className={`w-1/2 p-2 flex justify-center items-center ${!isFormValid ? 'opacity-25' : ''}`}
+            >
+              <img src={Frame117} alt="Next" className="w-12 h-12" />
+            </button>
+          </div>
         </div>
       </form>
     </div>
