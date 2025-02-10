@@ -1,12 +1,14 @@
+import { BrowserRouter } from 'react-router-dom'
 import CreateAccountfrom from './components/CreateAccountfrom'
+import Navbar from './components/header/Navbar'
 import './App.css'
 
 function App() {
-
   return (
-    <>
+    <BrowserRouter>
+      <Navbar />
       <CreateAccountfrom />
-    </>
+    </BrowserRouter>
   )
 }
 
