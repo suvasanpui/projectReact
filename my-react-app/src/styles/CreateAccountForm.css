@@ -1,0 +1,97 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  padding: 1rem 0;
+}
+
+.form-wrapper {
+  max-width: 48rem;
+  width: 100%;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-image {
+  width: 8rem;
+  height: 8rem;
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  color: #6d28d9;
+}
+
+.form-title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.input-group {
+  margin-bottom: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.input-field {
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
+.nav-button {
+  width: 50%;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-button img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.nav-button.disabled {
+  opacity: 0.25;
+}
+
+.user-type-button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.user-type-button.active {
+  background-color: #6d28d9;
+  color: white;
+}
+
+.user-type-button.inactive {
+  background-color: #e5e7eb;
+  color: #374151;
+}

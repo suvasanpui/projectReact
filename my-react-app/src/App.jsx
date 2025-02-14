@@ -1,5 +1,5 @@
 import { BrowserRouter } from 'react-router-dom'
-import CreateAccountfrom from './components/CreateAccountfrom'
+import CreateAccountfrom from './components/CreateAccountForm'
 import Navbar from './components/header/Navbar'
 import './App.css'
 

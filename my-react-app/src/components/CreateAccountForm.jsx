@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import buildingImage from '../assets/image.png';
 import Frame116 from '../assets/Frame 116.svg';
 import Frame117 from '../assets/Frame 117.svg';
+import "../styles/CreateAccountForm.css";
 
 // Data configurations
 const countries = ["India", "USA", "UK", "Canada", "Australia"];
@@ -105,38 +106,28 @@ function CreateAccountForm() {
 
   // Component render
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 py-4">
-      <form
-        onSubmit={handleSubmit}
-        className="max-w-3xl w-full bg-white rounded-lg shadow-lg p-6 grid grid-cols-2 gap-3"
-      >
+    <div className="form-container">
+      <form onSubmit={handleSubmit} className="form-wrapper">
         {/* Left Section - Logo and Title */}
-        <div className="flex flex-col items-center justify-center">
-          <img
-            src={buildingImage}
-            alt="Building"
-            className="w-32 h-32"  // Fixed: removed curly braces
-          />
-          <h1 className="text-xl font-bold mt-2 text-purple-700">housing.in</h1>
+        <div className="logo-section">
+          <img src={buildingImage} alt="Building" className="logo-image" />
+          <h1 className="logo-text">housing.in</h1>
         </div>
 
         {/* Right Section - Form Fields */}
         <div>
-          {/* Form Title */}
-          <h2 className="text-lg font-bold mb-3">Create Account</h2>
+          <h2 className="form-title">Create Account</h2>
 
           {/* User Type Selection */}
-          <div className="mb-3">
-            <label className="block text-gray-700 font-medium mb-1">I am a:</label>
-            <div className="flex space-x-4">
+          <div className="input-group">
+            <label>I am a:</label>
+            <div className="input-group">
               {["Owner", "Manager", "Tenant"].map((type) => (
                 <button
                   key={type}
                   type="button"
-                  className={`px-4 py-2 rounded-lg ${
-                    formData.userType === type
-                      ? "bg-purple-700 text-white"
-                      : "bg-gray-200 text-gray-700"
+                  className={`user-type-button ${
+                    formData.userType === type ? "active" : "inactive"
                   }`}
                   onClick={() => setFormData({ ...formData, userType: type })}
                 >
@@ -147,14 +138,14 @@ function CreateAccountForm() {
           </div>
 
           {/* Personal Information */}
-          <div className="flex mb-3 space-x-2">
+          <div className="input-group">
             <input
               type="text"
               name="firstName"
               placeholder="First Name"
               value={formData.firstName}
               onChange={handleChange}
-              className="border border-gray-300 rounded-lg p-2 w-full"
+              className="input-field"
             />
             <input
               type="text"
@@ -162,12 +153,12 @@ function CreateAccountForm() {
               placeholder="Surname"
               value={formData.lastName}
               onChange={handleChange}
-              className="border border-gray-300 rounded-lg p-2 w-full"
+              className="input-field"
             />
           </div>
 
-          <div className="mb-3">
-            <label className="block text-gray-700 font-medium mb-1">Date of Birth:</label>
+          <div className="input-group">
+            <label>Date of Birth:</label>
             <DatePicker
               selected={formData.dateOfBirth}
               onChange={handleDateChange}
@@ -176,14 +167,14 @@ function CreateAccountForm() {
               scrollableYearDropdown
               yearDropdownItemNumber={100}
               placeholderText="Select Date of Birth"
-              className="border border-gray-300 rounded-lg p-2 w-full"
+              className="input-field"
               maxDate={new Date()}
             />
           </div>
 
-          <div className="mb-3">
-            <label className="block text-gray-700 font-medium mb-1">Gender:</label>
-            <div className="space-x-4">
+          <div className="input-group">
+            <label>Gender:</label>
+            <div className="input-group">
               {["Male", "Female"].map((gender) => (
                 <label key={gender} className="flex items-center space-x-2">
                   <input
@@ -206,7 +197,7 @@ function CreateAccountForm() {
             placeholder="Email address"
             value={formData.email}
             onChange={handleChange}
-            className="mb-3 border border-gray-300 rounded-lg p-2 w-full"
+            className="input-field"
           />
           <input
             type="number"
@@ -214,16 +205,16 @@ function CreateAccountForm() {
             placeholder="Phone"
             value={formData.phone}
             onChange={handleChange}
-            className="mb-3 border border-gray-300 rounded-lg p-2 w-full"
+            className="input-field"
           />
 
           {/* Address Information */}
-          <div className="flex mb-3 space-x-2">
+          <div className="input-group">
             <select
               name="address.country"
               value={formData.address.country}
               onChange={handleChange}
-              className="border border-gray-300 rounded-lg p-2 w-full"
+              className="input-field"
             >
               <option value="">Select Country</option>
               {countries.map(country => (
@@ -237,7 +228,7 @@ function CreateAccountForm() {
               name="address.state"
               value={formData.address.state}
               onChange={handleChange}
-              className="border border-gray-300 rounded-lg p-2 w-full"
+              className="input-field"
               disabled={!formData.address.country}
             >
               <option value="">Select State</option>
@@ -249,14 +240,14 @@ function CreateAccountForm() {
             </select>
           </div>
 
-          <div className="flex mb-3 space-x-2">
+          <div className="input-group">
             <input
               type="text"
               name="address.pin"
               placeholder="PIN Code"
               value={formData.address.pin}
               onChange={handleChange}
-              className="border border-gray-300 rounded-lg p-2 w-1/3"
+              className="input-field"
               maxLength="6"
             />
             <input
@@ -265,30 +256,30 @@ function CreateAccountForm() {
               placeholder="Locality"
               value={formData.address.locality}
               onChange={handleChange}
-              className="border border-gray-300 rounded-lg p-2 w-2/3"
+              className="input-field"
             />
           </div>
 
-          <div className="mb-3">
+          <div className="input-group">
             <textarea
               name="address.street"
               placeholder="Residential Address"
               value={formData.address.street}
               onChange={handleChange}
-              className="border border-gray-300 rounded-lg p-2 w-full resize-none"
+              className="input-field"
               rows="3"
             />
           </div>
 
           {/* Password Fields */}
-          <div className="flex mb-3 space-x-2">
+          <div className="input-group">
             <input
               type="password"
               name="password"
               placeholder="New Password"
               value={formData.password}
               onChange={handleChange}
-              className="border border-gray-300 rounded-lg p-2 w-full"
+              className="input-field"
             />
             <input
               type="password"
@@ -296,26 +287,29 @@ function CreateAccountForm() {
               placeholder="Confirm Password"
               value={formData.confirmPassword}
               onChange={handleChange}
-              className="border border-gray-300 rounded-lg p-2 w-full"
+              className="input-field"
             />
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex justify-between space-x-4 w-full">
-            <button
-              type="button"
-              onClick={() => console.log("Frame 116 clicked")}
-              className="w-1/2 p-2 flex justify-center items-center"
+          <div className="button-group">
+            <button 
+              type="button" 
+              className="nav-button"
+              onClick={() => console.log("Previous button clicked")}
             >
-              <img src={Frame116} alt="Previous" className="w-12 h-12" />
+              <img src={Frame116} alt="Previous" />
             </button>
             <button
               type="button"
               disabled={!isFormValid}
-              onClick={() => console.log("Form submitted:", formData)}
-              className={`w-1/2 p-2 flex justify-center items-center ${!isFormValid ? 'opacity-25' : ''}`}
+              onClick={() => {
+                console.log("Form submitted:", formData);
+                handleSubmit({ preventDefault: () => {} });
+              }}
+              className={`nav-button ${!isFormValid ? 'disabled' : ''}`}
             >
-              <img src={Frame117} alt="Next" className="w-12 h-12" />
+              <img src={Frame117} alt="Next" />
             </button>
           </div>
         </div>
