@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useScrollDirection } from '../../hooks/useScrollDirection';
-import './Navbar.css';
+import '../../styles/Navbar.css';
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
