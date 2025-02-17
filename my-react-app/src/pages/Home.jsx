@@ -1,9 +1,13 @@
-import './Home.css';
+
+import CreateAccountForm from '../components/CreateAccountForm'
+import TopFooter from '../components/footer/TopFooter'
+import '../styles/Home.css';
 
 const Home = () => {
   return (
-    <div className="home-container">
-      <h1 className="home-title">Welcome to KPMG Careers</h1>
+    <div> 
+      <CreateAccountForm/>
+      <TopFooter/>
     </div>
   );
 };

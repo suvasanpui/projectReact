@@ -1,17 +1,32 @@
-import { BrowserRouter } from 'react-router-dom'
-import CreateAccountfrom from './components/CreateAccountForm'
-import Navbar from './components/header/Navbar'
-import './App.css'
-import TopFooter from './components/footer/TopFooter'
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/header/Navbar";
+import Home from "./pages/Home";
+import WhyKPMG from "./pages/WhyKPMG";
+import PracticeAreas from "./pages/PracticeAreas";
+import EntryCareers from "./pages/EntryCareers";
+import Experienced from "./pages/Experienced";
+import Contractor from "./pages/Contractor";
+import Executive from "./pages/Executive";
+import JobSearch from "./pages/JobSearch";
+import Description from './components/Description'
 
 function App() {
   return (
-    <BrowserRouter>
+    <div className="App">
       <Navbar />
-      <CreateAccountfrom />
-      <TopFooter/>
-    </BrowserRouter>
-  )
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/why-kpmg" element={<WhyKPMG />} />
+        <Route path="/practice-areas" element={<PracticeAreas />} />
+        <Route path="/entry-careers" element={<EntryCareers />} />
+        <Route path="/experienced" element={<Experienced />} />
+        <Route path="/contractor" element={<Contractor />} />
+        <Route path="/executive" element={<Executive />} />
+        <Route path="/job-search" element={<JobSearch />} />
+        <Route path="/description" element={<Description/>} />
+      </Routes>
+    </div>
+  );
 }
 
-export default App
+export default App;

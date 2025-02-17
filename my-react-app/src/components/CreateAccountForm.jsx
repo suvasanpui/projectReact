@@ -6,6 +6,7 @@ import buildingImage from '../assets/image.png';
 import Frame116 from '../assets/Frame 116.svg';
 import Frame117 from '../assets/Frame 117.svg';
 import "../styles/CreateAccountForm.css";
+import { useNavigate } from "react-router-dom";
 
 // Data configurations
 const countries = ["India", "USA", "UK", "Canada", "Australia"];
@@ -18,6 +19,8 @@ const statesByCountry = {
 };
 
 function CreateAccountForm() {
+  
+  const navigate=useNavigate();
   // State management
   const [isFormValid, setIsFormValid] = useState(false);
   const [formData, setFormData] = useState({
@@ -99,6 +102,7 @@ function CreateAccountForm() {
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent page reload
     console.log("Form Data Submitted:", formData);
+    navigate('/description')
   };
 
   // Helper calculations
