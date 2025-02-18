@@ -1,14 +1,27 @@
+/**
+ * Description Component
+ * Form component for property headline and description
+ */
+
+// Component for property description form
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Description.css';
 import Frame46 from '../assets/Frame 46.svg';
 import Frame117 from '../assets/Frame 117.svg';
 
+/**
+ * Description component for property details form
+ * @returns {JSX.Element} Property description form
+ */
 const Description = () => {
+  // Form state for headline and description
   const [formData, setFormData] = useState({
     headline: '',
     description: ''
   });
 
+  // Update form data on input change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevData => ({
@@ -17,11 +30,13 @@ const Description = () => {
     }));
   };
 
+  // Handle form submission
   const handleNextClick = () => {
     console.log('Form Values:', formData);
   };
 
   return (
+    // Form container
     <div className="description-wrapper">
       <div className="description-card">
         <h2 className="card-title">
@@ -55,9 +70,9 @@ const Description = () => {
         </div>
         
         <div className="navigation-buttons">
-          <button className="nav-button">
+          <Link to="/" className="nav-button">
             <img src={Frame46} alt="Previous" />
-          </button>
+          </Link>
           <button className="nav-button" onClick={handleNextClick}>
             <img src={Frame117} alt="next" />
           </button>
@@ -68,3 +83,8 @@ const Description = () => {
 };
 
 export default Description;
+
+
+
+
+

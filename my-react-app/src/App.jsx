@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Navbar from "./components/header/Navbar";
+//import Navbar from "./components/header/Navbar";
 import Home from "./pages/Home";
 import WhyKPMG from "./pages/WhyKPMG";
 import PracticeAreas from "./pages/PracticeAreas";
@@ -9,11 +9,12 @@ import Contractor from "./pages/Contractor";
 import Executive from "./pages/Executive";
 import JobSearch from "./pages/JobSearch";
 import Description from './components/Description'
+import Wall from "./pages/Wall";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      {/*<Navbar />*/}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/why-kpmg" element={<WhyKPMG />} />
@@ -24,6 +25,7 @@ function App() {
         <Route path="/executive" element={<Executive />} />
         <Route path="/job-search" element={<JobSearch />} />
         <Route path="/description" element={<Description/>} />
+        <Route path="/wall" element={<Wall/>} />
       </Routes>
     </div>
   );

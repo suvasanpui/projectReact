@@ -1,13 +1,16 @@
+// Import dependencies
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useScrollDirection } from '../../hooks/useScrollDirection';
 import '../../styles/Navbar.css';
 
-
+// Navigation component
 const Navbar = () => {
+  // State for mobile menu toggle
   const [isOpen, setIsOpen] = useState(false);
   const scrollDirection = useScrollDirection();
 
+  // Navigation links data
   const navLinks = [
     { title: "Why KPMG", path: "/why-kpmg" },
     { title: "Practice Areas", path: "/practice-areas" },
@@ -18,6 +21,7 @@ const Navbar = () => {
     { title: "Job Search", path: "/job-search" },
   ];
 
+  // Search icon component
   const SearchIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" className="search-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -25,13 +29,17 @@ const Navbar = () => {
   );
 
   return (
+    // Main navigation
     <nav className={`navbar ${scrollDirection === "down" ? "hidden" : ""}`}>
       <div className="navbar-container">
+        {/* Navigation content wrapper */}
         <div className="nav-content">
+          {/* Logo */}
           <div>
             <Link to="/" className="brand">KPMG</Link>
           </div>
 
+          {/* Desktop navigation menu */}
           <div className="desktop-menu">
             {navLinks.map((link) => (
               <Link
@@ -45,6 +53,7 @@ const Navbar = () => {
             ))}
           </div>
 
+          {/* Mobile menu toggle */}
           <div className="mobile-menu-button">
             <Link to="/job-search">
               <SearchIcon />
@@ -63,6 +72,7 @@ const Navbar = () => {
           </div>
         </div>
 
+        {/* Mobile navigation menu */}
         {isOpen && (
           <div className="mobile-menu">
             {navLinks.map((link) => (

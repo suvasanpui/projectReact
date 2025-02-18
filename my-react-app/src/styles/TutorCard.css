@@ -1,0 +1,198 @@
+.tutor-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: #f3f4f6;
+  min-height: 100vh;
+}
+
+.tutor-card {
+  width: 100%;
+  max-width: 38rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.profile-section {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profile-image {
+  width: 4rem;
+  height: 4rem;
+  min-width: 4rem;
+  background-color: #d1d5db;
+  border-radius: 9999px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tutor-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  color: #f59e0b;
+}
+
+.stats-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  margin: 0;
+  flex: 1;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+}
+
+.stat-item {
+  text-align: center;
+  flex: 0 0 auto;
+  min-width: 60px;
+  max-width: 80px;
+  padding: 0.5rem;
+}
+
+.stat-item img {
+  width: 50px;
+  height: 50px;
+  padding: 0.5rem;
+  background-color: #f3f4f6;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+  object-fit: contain;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+}
+
+.stat-label {
+  font-size: 0.895rem;
+  color: #1e1f20;
+  margin-top: 0.25rem;
+  white-space: nowrap;
+}
+
+.bio {
+  color: #374151;
+}
+
+.expand-button {
+  width: 100%;
+  color: #7c3aed;
+  margin-top: 0.5rem;
+}
+
+.expanded-content {
+  margin-top: 1rem;
+  color: #374151;
+}
+
+.above-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url('../assets/aboveArrow.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+.below-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url('../assets/belowArrow.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+@media screen and (max-width: 480px) {
+  .stats-container {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 0.25rem;
+    scrollbar-width: thin;
+  }
+
+  .stats-container::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .stats-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+
+  .stats-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+
+  .stats-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  .stat-item {
+    min-width: 55px;
+  }
+
+  .stat-item img {
+    width: 45px;
+    height: 45px;
+    padding: 0.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.895rem;
+  }
+}
+
+.profile-image{
+    
+}
+
+.profile-image-stats {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
