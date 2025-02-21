@@ -1,0 +1,81 @@
+{
+  "aboutMe": {
+    "name": "Suva Sanpui",
+    "role": "Frontend Developer",
+    "bio": "A passionate web developer with expertise in React.js and Tailwind CSS.",
+    "avatar": "/images/avatar.jpg",
+    "location": "West Bengal, India",
+    "email": "your.email@example.com",
+    "socialLinks": {
+      "github": "https://github.com/yourusername",
+      "linkedin": "https://linkedin.com/in/yourusername",
+      "twitter": "https://twitter.com/yourusername"
+    }
+  },
+  "skills": [
+    { "name": "JavaScript", "level": 90 },
+    { "name": "React", "level": 85 },
+    { "name": "Node.js", "level": 75 },
+    { "name": "MongoDB", "level": 70 },
+    { "name": "Tailwind CSS", "level": 95 }
+  ],
+  "hobbies": [
+    {
+      "name": "Coding",
+      "description": "Building side projects and learning new technologies",
+      "icon": "code"
+    },
+    {
+      "name": "Reading",
+      "description": "Technical books and web development articles",
+      "icon": "book"
+    },
+    {
+      "name": "Gaming",
+      "description": "Strategy and puzzle games",
+      "icon": "gamepad"
+    }
+  ],
+  "passions": [
+    {
+      "title": "Web Development",
+      "description": "Creating responsive and interactive web applications"
+    },
+    {
+      "title": "Open Source",
+      "description": "Contributing to and maintaining open source projects"
+    },
+    {
+      "title": "Teaching",
+      "description": "Sharing knowledge through tutorials and mentoring"
+    }
+  ],
+  "education": [
+    {
+      "degree": "BTech in Information Technology",
+      "institution": "Contai Polytechnic",
+      "year": "2020-2024",
+      "description": "Focus on web technologies and software development"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Frontend Developer Intern",
+      "company": "XYZ Company",
+      "period": "2023 - Present",
+      "description": "Developing and maintaining React applications"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "React Certification",
+      "issuer": "Meta",
+      "year": "2023"
+    },
+    {
+      "name": "Full Stack Development",
+      "issuer": "freeCodeCamp",
+      "year": "2023"
+    }
+  ]
+}

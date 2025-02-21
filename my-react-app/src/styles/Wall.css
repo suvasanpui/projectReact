@@ -1,0 +1,45 @@
+.outer-container {
+    background-color: #dadada4d;
+    padding: 2rem;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.tutor-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 1rem;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.tutor-header {
+    display: flex;
+    font-weight: bold;
+    gap: 0.5rem;
+    width: 100%;
+    color: black;
+    border-radius: 0.5rem;
+    margin-bottom: 0.58rem;
+}
+
+.header-tags {
+    display: flex;
+    gap: 0.5rem;
+    color: white;
+}
+
+.header-tag {
+    background-color: #6d28d9;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.header-title {
+    font-size: 1.25rem;
+    /* increased from default */
+    font-weight: bold;
+}
