@@ -53,8 +53,9 @@ const TutorCard = ({
 }) => {
   // State to manage the expanded/collapsed view of the bio
   const [expanded, setExpanded] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [visibleStats, setVisibleStats] = useState([0, 1, 2, 3]);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [animatingItems, setAnimatingItems] = useState([]);
 
   const stats = [
     { icon: MapMarker, label: `${distance} km` },
@@ -73,20 +74,41 @@ const TutorCard = ({
   // Add animation timing
   const handleTransition = () => {
     setIsAnimating(true);
-    setTimeout(() => setIsAnimating(false), 500); // Match CSS transition duration
-  };
-
-  const handlePrev = () => {
-    if (currentSlide > 0 && !isAnimating) {
-      handleTransition();
-      setCurrentSlide(curr => curr - 1);
-    }
+    setTimeout(() => {
+      setIsAnimating(false);
+      setAnimatingItems([]);
+    }, 600); // Total animation duration
   };
 
   const handleNext = () => {
-    if (currentSlide < stats.length - 4 && !isAnimating) {
+    if (!isAnimating) {
+      const exitingIndex = visibleStats[0];  // First visible item
+      const enteringIndex = (visibleStats[3] + 1) % stats.length;  // New item after last visible
+
+      setAnimatingItems([
+        { index: exitingIndex, type: 'exiting' },
+        { index: enteringIndex, type: 'entering' }
+      ]);
+
       handleTransition();
-      setCurrentSlide(curr => curr + 1);
+      setVisibleStats(prev => prev.map(index => (index + 1) % stats.length));
+    }
+  };
+
+  const handlePrev = () => {
+    if (!isAnimating) {
+      const exitingIndex = visibleStats[3];  // Last visible item
+      const enteringIndex = visibleStats[0] === 0 ? stats.length - 1 : visibleStats[0] - 1;  // New first item
+
+      setAnimatingItems([
+        { index: exitingIndex, type: 'exiting' },
+        { index: enteringIndex, type: 'entering' }
+      ]);
+
+      handleTransition();
+      setVisibleStats(prev => 
+        prev.map(index => index === 0 ? stats.length - 1 : index - 1)
+      );
     }
   };
 
@@ -107,29 +129,27 @@ const TutorCard = ({
             <button 
               className="stat-item" 
               onClick={handlePrev}
-              disabled={currentSlide === 0 || isAnimating}
+              disabled={isAnimating}
             >
               <img src={prevArrow} alt="Previous" className="arrow-button" />
             </button>
             <div className="stats-container">
-              {stats.map((stat, index) => (
+              {visibleStats.map((statIndex, index) => (
                 <div
-                  key={index}
+                  key={`${statIndex}-${index}`}
                   className={`stat-item ${
-                    index < currentSlide ? 'exiting' :
-                    index >= currentSlide + 4 ? 'entering' : ''
+                    animatingItems.find(item => item.index === statIndex)?.type || ''
                   }`}
-                  style={{ '--slide-offset': currentSlide }}
                 >
-                  <img src={stat.icon} alt={stat.label} />
-                  <div className="stat-label">{stat.label}</div>
+                  <img src={stats[statIndex].icon} alt={stats[statIndex].label} />
+                  <div className="stat-label">{stats[statIndex].label}</div>
                 </div>
               ))}
             </div>
             <button 
               className="stat-item" 
               onClick={handleNext}
-              disabled={currentSlide >= stats.length - 4 || isAnimating}
+              disabled={isAnimating}
             >
               <img src={nextArrow} alt="Next" className="arrow-button" />
             </button>
