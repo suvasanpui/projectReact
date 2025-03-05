@@ -1,0 +1,279 @@
+/* General styles */
+.container {
+    max-width: 650px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  /* Heading Styles */
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  h3 {
+    margin-top: 15px;
+    color: #444;
+  }
+  
+  /* Button Styles */
+  .btn {
+    background-color: #6200ea;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  .btn:hover {
+    background-color: #4b00b5;
+  }
+  
+  /* Input & Select Styles */
+  .input, .select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  /* Checkbox & Radio Styles */
+  .checkbox-label, .radio-label {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+  }
+  
+  .checkbox-label input,
+  .radio-label input {
+    margin-right: 10px;
+  }
+
+  /* Subject Tags Styles */
+  .selected-subjects {
+    display: flex;
+    color: white;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+    margin: 10px 0;
+  }
+  
+  .subject-tag {
+    display: inline-flex;
+    align-items: center;
+    background: white;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin: 4px;
+    font-size: 14px;
+  }
+  
+  .remove-subject {
+    background: none;
+    border: none;
+    margin-left: 6px;
+    cursor: pointer;
+    padding: 0 4px;
+    color: black;
+    display: flex;
+    border-radius: 50%;
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .remove-subject:hover {
+    color: red;
+  }
+
+  /* LinkedIn-style profile picture */
+  .profile-picture-section {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  .profile-picture-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile-picture {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    background-color: #f3f6f8;
+  }
+
+  .profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .profile-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .camera-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: white;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid #0073b1;
+  }
+
+  .hidden-input {
+    display: none;
+  }
+
+  /* Form Section Styles */
+  .form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Radio Group Styles */
+  .radio-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+  }
+
+  /* Address Section Styles */
+  .address-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 15px 0;
+  }
+
+  .address-section > div {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .address-section > div > * {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  /* Checkbox Group Styles */
+  .checkbox-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+  }
+
+  /* Fee Section Styles */
+  .fee-section {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .subjects-section {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .search-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .subjects-dropdown div:hover {
+    background-color: #f0f0f0;
+  }
+
+  .subject-search-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  .subjects-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .dropdown-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .dropdown-item:hover {
+    background-color: #f0f0f0;
+  }
+
+  .selected-subjects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .subject-tag {
+    background-color: #e1e1e1;
+    color: #333;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .remove-subject {
+    background: none;
+    border: none;
+    padding: 0 4px;
+    cursor: pointer;
+    color: #666;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .remove-subject:hover {
+    color: #ff4444;
+  }

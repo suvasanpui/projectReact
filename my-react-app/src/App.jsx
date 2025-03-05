@@ -10,6 +10,7 @@ import Executive from "./pages/Executive";
 import JobSearch from "./pages/JobSearch";
 import Description from './components/Description'
 import Wall from "./pages/Wall";
+import TutorProfile from "./pages/TutorProfile";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/job-search" element={<JobSearch />} />
         <Route path="/description" element={<Description/>} />
         <Route path="/wall" element={<Wall/>} />
+        <Route path="/tutor-profile" element={<TutorProfile/>} />
       </Routes>
     </div>
   );
