@@ -17,7 +17,7 @@ DB_CONNECTION_STRING=your_database_connection_string
 
 3. Start the server:
 ```bash
-npm start
+npm run dev
 ```
 
 ## API Endpoints
