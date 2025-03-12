@@ -8,14 +8,16 @@ import Experienced from "./pages/Experienced";
 import Contractor from "./pages/Contractor";
 import Executive from "./pages/Executive";
 import JobSearch from "./pages/JobSearch";
-import Description from './components/Description'
+import Description from "./components/Description";
 import Wall from "./pages/Wall";
 import TutorProfile from "./pages/TutorProfile";
+import FileUpload from "./pages/FileUpload";
 
 function App() {
   return (
     <div className="App">
       {/*<Navbar />*/}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/why-kpmg" element={<WhyKPMG />} />
@@ -25,9 +27,10 @@ function App() {
         <Route path="/contractor" element={<Contractor />} />
         <Route path="/executive" element={<Executive />} />
         <Route path="/job-search" element={<JobSearch />} />
-        <Route path="/description" element={<Description/>} />
-        <Route path="/wall" element={<Wall/>} />
-        <Route path="/tutor-profile" element={<TutorProfile/>} />
+        <Route path="/description" element={<Description />} />
+        <Route path="/wall" element={<Wall />} />
+        <Route path="/tutor-profile" element={<TutorProfile />} />
+        <Route path="/upload" element={<FileUpload />} />
       </Routes>
     </div>
   );
