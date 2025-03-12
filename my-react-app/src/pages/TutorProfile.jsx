@@ -228,10 +228,12 @@ const TutorProfile = () => {
 
         {/* Board */}
         <h3>Board</h3>
-        <Checkbox label="CBSE" checked={board === "CBSE"} onChange={() => setBoard("CBSE")} />
-        <Checkbox label="ICSE" checked={board === "ICSE"} onChange={() => setBoard("ICSE")} />
-        <Checkbox label="West Bengal" checked={board === "West Bengal"} onChange={() => setBoard("West Bengal")} />
-        <Checkbox label="Others" checked={board === "Others"} onChange={() => setBoard("Others")} />
+        <RadioGroup name="board-group">
+          <Radio label="CBSE" value="CBSE" checked={board === "CBSE"} onChange={(e) => setBoard(e.target.value)} />
+          <Radio label="ICSE" value="ICSE" checked={board === "ICSE"} onChange={(e) => setBoard(e.target.value)} />
+          <Radio label="West Bengal" value="West Bengal" checked={board === "West Bengal"} onChange={(e) => setBoard(e.target.value)} />
+          <Radio label="Others" value="Others" checked={board === "Others"} onChange={(e) => setBoard(e.target.value)} />
+        </RadioGroup>
 
         {/* Fee and Frequency */}
         <div>
