@@ -10,12 +10,12 @@ const About = () => {
   return (
     <div className="flex flex-col md:flex-row items-center justify-center p-8 m-10 bg-white">
       {/* Image Grid */}
-      <div className="grid grid-cols-2 gap-3 w-full md:w-[297px] md-h-[259px]">
+      <div className="grid grid-cols-2 gap-3 w-full md:w-[297px] md:h-[259px]">
         {images.map((image, index) => (
           <div 
             key={index} 
-            className={`overflow-hidden w-full h-full ${
-              index == 1 || index==3 ? 'mt-8' : 'mt-0'
+            className={`w-full h-full ${
+              index ==1 || index==3 ? 'mt-8' : 'mt-0'
             }`}
           >
             <img
@@ -24,6 +24,7 @@ const About = () => {
               className="w-full h-full object-cover"
             />
           </div>
+          
         ))}
       </div>
 

@@ -1,4 +1,3 @@
-// src/components/Header/TopHeader.jsx
 import React from "react";
 import linkedinIcon from "../../assets/linkedin.png";
 import youtubeIcon from "../../assets/youtube.png";
@@ -6,8 +5,8 @@ import whatsappIcon from "../../assets/whatsapp.svg";
 import phoneIcon from "../../assets/call.svg";
 import email from "../../assets/email.svg";
 
-const ContactInfo = ({ className }) => (
-  <div className={`flex items-center ${className}`}>
+const ContactInfo = () => (
+  <div className='flex justify-end flex-grow pr-8'>
     <span className="flex items-center gap-2">
       <img src={phoneIcon} alt="Phone" className="h-4 w-4" />
       <img src={whatsappIcon} alt="WhatsApp" className="h-4 w-4" />
@@ -34,9 +33,9 @@ const SocialLinks = () => (
 
 const TopHeader = () => {
   return (
-    <div className="hidden md:block bg-white py-2 px-4">
-      <div className="hidden md:flex justify-between items-center text-sm">
-        <ContactInfo className="justify-end flex-grow pr-8" />
+    <div className=" bg-white py-2 pr-2">
+      <div className="hidden md:flex text-sm">
+        <ContactInfo/>
         <SocialLinks />
       </div>
     </div>

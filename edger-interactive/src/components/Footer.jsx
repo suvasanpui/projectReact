@@ -16,11 +16,11 @@ const Footer = () => {
         <div className="text-center md:text-left">
           <h3 className="text-xl font-semibold mb-3">Useful Links</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="hover:underline">Home</a></li>
-            <li><a href="#" className="hover:underline">Design Services</a></li>
-            <li><a href="#" className="hover:underline">Products</a></li>
-            <li><a href="#" className="hover:underline">Shop</a></li>
-            <li><a href="#" className="hover:underline">Contact</a></li>
+            <li><a href="#" >Home</a></li>
+            <li><a href="#" >Design Services</a></li>
+            <li><a href="#" >Products</a></li>
+            <li><a href="#" >Shop</a></li>
+            <li><a href="#" >Contact</a></li>
           </ul>
         </div>
 
@@ -28,11 +28,11 @@ const Footer = () => {
         <div className="text-center md:text-left">
           <h3 className="text-xl font-semibold mb-3">Need Help?</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="hover:underline">FAQs</a></li>
-            <li><a href="#" className="hover:underline">Privacy</a></li>
-            <li><a href="#" className="hover:underline">Policy</a></li>
-            <li><a href="#" className="hover:underline">Support</a></li>
-            <li><a href="#" className="hover:underline">Terms</a></li>
+            <li><a href="#" >FAQs</a></li>
+            <li><a href="#" >Privacy</a></li>
+            <li><a href="#" >Policy</a></li>
+            <li><a href="#" >Support</a></li>
+            <li><a href="#" >Terms</a></li>
           </ul>
         </div>
 

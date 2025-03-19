@@ -1,284 +1,156 @@
-import { useState, useEffect, useRef } from "react";
-import { Input } from "../components/ui/input";
-import { Checkbox } from "../components/ui/checkbox";
-import { RadioGroup, Radio } from "../components/ui/radio-group";
-import { Select } from "../components/ui/select";
-import "../components/ui/styles.css"; // Import styles
-import { CgProfile } from "react-icons/cg";
+import { useState } from "react";
+import { FaCamera, FaUserAlt } from "react-icons/fa";
+import About from "../components/Tutor/About";
+import Bio from "../components/Tutor/Bio";
+import Board from "../components/Tutor/Board";
+import ClientFeedback from "../components/Tutor/ClientFeedback";
+import Contact from "../components/Tutor/contact";
+import Standard from "../components/Tutor/Standard";
+import Subjects from "../components/Tutor/Subjects";
+import TutionLocation from "../components/Tutor/TutionLocation";
+import Attach from '../assets/Attach file.svg'
+import Link1 from '../assets/Link.svg'
 
-const TutorProfile = () => {
-  const [medium, setMedium] = useState([]);
-  const [tuitionPlace, setTuitionPlace] = useState("tutors_place"); // Set default value
-  const [subjects, setSubjects] = useState([]);
-  const [board, setBoard] = useState("");
-  const [fee, setFee] = useState("");
-  const [frequency, setFrequency] = useState("");
-  const [standard, setStandard] = useState("");
-  const [academy, setAcademy] = useState("");
-  const [address, setAddress] = useState({
-    state: "",
-    street: "",
-    pin: "",
-    locality: "",
-  });
+const TutorProfilePage = () => {
+  const [backgroundImage, setBackgroundImage] = useState(null);
   const [profileImage, setProfileImage] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [showDropdown, setShowDropdown] = useState(false);
-  const searchRef = useRef(null);
-
-  const allSubjects = ["Coding", "Mathematics", "Physics", "GRE", "Chemistry", "Biology", "English"];
-
-  const filteredSubjects = allSubjects.filter(subject =>
-    subject.toLowerCase().includes(searchTerm.toLowerCase()) &&
-    !subjects.includes(subject)
-  );
-
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (searchRef.current && !searchRef.current.contains(event.target)) {
-        setShowDropdown(false);
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const handleMediumChange = (value) => {
-    setMedium((prev) =>
-      prev.includes(value) ? prev.filter((m) => m !== value) : [...prev, value]
-    );
-  };
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setProfileImage(reader.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
   
+  const [resumeUrl, setResumeUrl] = useState(null);
 
-  const removeSubject = (subjectToRemove) => {
-    setSubjects(subjects.filter(subject => subject !== subjectToRemove));
+  const handleBackgroundUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setBackgroundImage(URL.createObjectURL(file));
+    }
   };
 
-  const handleSearchFocus = () => {
-    setShowDropdown(true);
+  const handleProfileUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setProfileImage(URL.createObjectURL(file));
+    }
   };
 
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-    setShowDropdown(true);
-  };
-
-  const handleSubjectSelect = (subject) => {
-    if (!subjects.includes(subject)) {
-      setSubjects([...subjects, subject]);
-      setSearchTerm("");
-      setShowDropdown(false);
+  const handleResumeUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+     
+      setResumeUrl(URL.createObjectURL(file));
     }
   };
 
   return (
-    <div className="container">
-      <h2 className="text-center">Expand your reach, empower more students.</h2>
-      <p className="text-center">We just need a few more details to get your tutor profile started.</p>
-
-      <div className="form-section">
-        {/* Profile Picture Upload */}
-        <div className="profile-picture-section">
-          <div className="profile-picture-container">
-            <div className="profile-picture">
-              {profileImage ? (
-                <img src={profileImage} alt="Profile" className="profile-image" />
-              ) : (
-                <div className="profile-placeholder">
-                  <CgProfile size={100} />
-                </div>
+    <div className="p-8 bg-gray-100 min-h-screen">
+      <div 
+        className="relative h-56 rounded-t-xl bg-gray-300"
+        style={{
+          backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleBackgroundUpload}
+          className="absolute top-4 right-4 hidden"
+          id="bg-upload"
+        />
+        <label
+          htmlFor="bg-upload"
+          className="absolute top-4 right-4 bg-white px-4 py-2 rounded-lg cursor-pointer hover:bg-gray-100"
+        >
+          Upload Cover
+        </label>
+        <div className="absolute top-40 left-1/5 md:left-1/11 transform -translate-x-1/2">
+          <div className="relative group">
+            <div 
+              className={` bg-[#90949C] w-32 h-32 rounded-full border-4 border-white overflow-hidden 
+                transition-transform duration-300 group-hover:opacity-90 flex items-center justify-center
+                ${!profileImage ? 'bg-gradient-to-br from-purple-500 to-purple-700' : ''}`}
+              style={{
+                backgroundImage: profileImage ? `url(${profileImage})` : 'none',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
+            >
+              {!profileImage && (
+                <FaUserAlt className="text-black/90 " size={40} />
               )}
-              <label className="camera-icon">
-                <Input 
-                  type="file" 
-                  accept="image/*"
-                  onChange={handleImageChange}
-                  className="hidden-input"
-                />
-                📸
-              </label>
             </div>
-          </div>
-        </div>
-
-        {/* Medium Selection */}
-        <div>
-          <h3>Medium</h3>
-          <div className="checkbox-group">
-            <Checkbox label="Bengali" checked={medium.includes("Bengali")} onChange={() => handleMediumChange("Bengali")} />
-            <Checkbox label="English" checked={medium.includes("English")} onChange={() => handleMediumChange("English")} />
-            <Checkbox label="Hindi" checked={medium.includes("Hindi")} onChange={() => handleMediumChange("Hindi")} />
-          </div>
-        </div>
-
-        {/* Tuition Place */}
-        <div>
-          <h3>Tuition Place</h3>
-          <div className="radio-group">
-            <Radio
-              name="tuitionPlace"
-              value="students_home"
-              label="Student's Home"
-              checked={tuitionPlace === "students_home"}
-              onChange={(e) => setTuitionPlace(e.target.value)}
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleProfileUpload}
+              className="hidden"
+              id="profile-upload"
             />
-            <Radio
-              name="tuitionPlace"
-              value="tutors_place"
-              label="Tutor's Place"
-              checked={tuitionPlace === "tutors_place"}
-              onChange={(e) => setTuitionPlace(e.target.value)}
-            />
-            <Radio
-              name="tuitionPlace"
-              value="online"
-              label="Online"
-              checked={tuitionPlace === "online"}
-              onChange={(e) => setTuitionPlace(e.target.value)}
-            />
-          </div>
-        </div>
-
-        {/* Tutor Address */}
-        {tuitionPlace === "tutors_place" && (
-          <div className="address-section">
-            <h3>Tutor Address</h3>
-            <div>
-              <Select 
-                options={["State 1", "State 2"]} 
-                value={address.state} 
-                onChange={(e) => setAddress({ ...address, state: e.target.value })} 
-              />
-              <Input 
-                placeholder="Street Address" 
-                value={address.street} 
-                onChange={(e) => setAddress({ ...address, street: e.target.value })} 
-              />
-              <Input 
-                placeholder="Pin" 
-                value={address.pin} 
-                onChange={(e) => setAddress({ ...address, pin: e.target.value })} 
-              />
-              <Input 
-                placeholder="Locality" 
-                value={address.locality} 
-                onChange={(e) => setAddress({ ...address, locality: e.target.value })} 
-              />
-            </div>
-          </div>
-        )}
-
-        {/* Subjects */}
-        <div className="subjects-section">
-          <h3>Subjects I want to teach</h3>
-          <div className="search-container" ref={searchRef}>
-            <Input
-              type="text"
-              placeholder="Search subjects..."
-              value={searchTerm}
-              onChange={handleSearchChange}
-              onFocus={handleSearchFocus}
-              className="subject-search-input"
-            />
+            <label
+              htmlFor="profile-upload"
+              className="absolute bottom-0 right-0 bg-purple-600 p-3 rounded-full cursor-pointer 
+                shadow-lg hover:bg-purple-700 transition-all duration-300 
+                border-2 border-white transform translate-y-1 translate-x-1
+                hover:scale-110 hover:shadow-xl"
+            >
             
-            {showDropdown && filteredSubjects.length > 0 && (
-              <div className="subjects-dropdown">
-                {filteredSubjects.map(subject => (
-                  <div
-                    key={subject}
-                    onClick={() => handleSubjectSelect(subject)}
-                    className="dropdown-item"
-                  >
-                    {subject}
-                  </div>
-                ))}
+              <FaCamera className="text-white" size={16} />
+              <div className="absolute -top-8 right-0 bg-white px-2 py-1 rounded-md text-xs 
+                text-gray-700 shadow-md opacity-0 group-hover:opacity-100 transition-opacity 
+                duration-300 whitespace-nowrap">
+                Change photo
               </div>
-            )}
+            </label>
           </div>
-
-          {subjects.length > 0 && (
-            <div className="selected-subjects">
-              {subjects.map((subject) => (
-                <span key={subject} className="subject-tag">
-                  {subject}
-                  <button 
-                    onClick={() => removeSubject(subject)}
-                    className="remove-subject"
-                  >
-                    ×
-                  </button>
-                </span>
-              ))}
-            </div>
+        </div>
+      </div>
+      <div className="mt-20 md:flex md:items-center md:justify-between md:px-8">
+        <div className="text-start md:text-left">
+          <h1 className="text-3xl font-bold">Sarthak Haldar</h1>
+        </div>
+        <div className="flex justify-start space-x-4 mt-4 md:mt-0">
+          <div className="relative">
+            <input
+              type="file"
+              accept=".pdf,.doc,.docx"
+              onChange={handleResumeUpload}
+              className="hidden"
+              id="resume-upload"
+            />
+            <label
+              htmlFor="resume-upload"
+              className="px-4 py-2 bg-purple-600 text-white rounded-xl hover:bg-purple-700 
+                transition-colors cursor-pointer inline-flex items-center gap-2"
+            >
+              <img src={Attach} alt="attach" className="w-5 h-5" />
+              Upload Resume
+            </label>
+          </div>
+          {resumeUrl && (
+            <a
+              href={resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 bg-gray-300 text-gray-700 rounded-xl hover:bg-gray-400 
+                transition-colors inline-flex items-center gap-2"
+            >
+              <img src={Link1} alt="link" className="w-5 h-5" />
+              View Resume
+            </a>
           )}
         </div>
-
-        {/* Board */}
-        <h3>Board</h3>
-        <RadioGroup name="board-group">
-          <Radio label="CBSE" value="CBSE" checked={board === "CBSE"} onChange={(e) => setBoard(e.target.value)} />
-          <Radio label="ICSE" value="ICSE" checked={board === "ICSE"} onChange={(e) => setBoard(e.target.value)} />
-          <Radio label="West Bengal" value="West Bengal" checked={board === "West Bengal"} onChange={(e) => setBoard(e.target.value)} />
-          <Radio label="Others" value="Others" checked={board === "Others"} onChange={(e) => setBoard(e.target.value)} />
-        </RadioGroup>
-
-        {/* Fee and Frequency */}
-        <div>
-          <h3>My Fee</h3>
-          <div className="fee-section">
-            <Input type="number" placeholder="Enter fee amount" value={fee} onChange={(e) => setFee(e.target.value)} />
-            <Select options={["Per Hour", "Per Class", "Per Month"]} value={frequency} onChange={(e) => setFrequency(e.target.value)} />
-          </div>
-        </div>
-
-        {/* Standard */}
-        <h3>Standard</h3>
-        <RadioGroup name="standard-group">
-          <Radio 
-            label="Primary (1st to 5th std)" 
-            value="primary" 
-            checked={standard === "primary"} 
-            onChange={(e) => setStandard(e.target.value)} 
-          />
-          <Radio 
-            label="Secondary (6th to 10th std)" 
-            value="secondary" 
-            checked={standard === "secondary"} 
-            onChange={(e) => setStandard(e.target.value)} 
-          />
-          <Radio 
-            label="Higher Secondary (11th and 12th std)" 
-            value="higher_secondary" 
-            checked={standard === "higher_secondary"} 
-            onChange={(e) => setStandard(e.target.value)} 
-          />
-          <Radio 
-            label="Skill-based" 
-            value="skill_based" 
-            checked={standard === "skill_based"} 
-            onChange={(e) => setStandard(e.target.value)} 
-          />
-        </RadioGroup>
-
-        {/* Academy Name */}
-        <h3>Please mention the name of your academy (if any)</h3>
-        <Input type="text" placeholder="Academy Name" value={academy} onChange={(e) => setAcademy(e.target.value)} />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+        <Bio />
+        <About />
+        <TutionLocation />
+        <Board />
+        <Subjects />
+        <Contact />
+        <Standard />
+        <ClientFeedback />
       </div>
     </div>
   );
 };
 
-export default TutorProfile;
+export default TutorProfilePage;
