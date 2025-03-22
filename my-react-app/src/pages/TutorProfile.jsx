@@ -39,6 +39,27 @@ const TutorProfilePage = () => {
     }
   };
 
+  const getComponentClass = (id) => {
+    switch(id) {
+      case 1: return 'md:pt-8';
+      case 3: return '';
+      case 7: return 'md:pb-5';
+      case 8: return 'col-span-1 md:col-span-2'; // ClientFeedback spans full width
+      default: return 'gap-0';
+    }
+  };
+
+  const components = [
+    { id: 1, Component: Bio, title: 'Bio' },
+    { id: 2, Component: About, title: 'About' },
+    { id: 3, Component: TutionLocation, title: 'Tution Location' },
+    { id: 4, Component: Board, title: 'Board' },
+    { id: 5, Component: Subjects, title: 'Subjects' },
+    { id: 6, Component: Contact, title: 'Contact' },
+    { id: 7, Component: Standard, title: 'Standard' },
+    { id: 8, Component: ClientFeedback, title: 'Client Feedback' }
+  ];
+
   return (
     <div className="p-8 bg-gray-100 min-h-screen">
       <div 
@@ -140,14 +161,12 @@ const TutorProfilePage = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
-        <Bio />
-        <About />
-        <TutionLocation />
-        <Board />
-        <Subjects />
-        <Contact />
-        <Standard />
-        <ClientFeedback />
+        {components.map(({ id, Component }) => (
+          <div key={id} className={getComponentClass(id)}>
+            <Component />
+          </div>
+        ))}
+        
       </div>
     </div>
   );
